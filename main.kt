@@ -1,19 +1,26 @@
-import java.util.*
-import kotlin.system.exitProcess
-
+import java.util.Scanner
 fun main(){
-    val input = Scanner(System.`in`) //Подтянули сканер
+    val scan = Scanner(System.`in`)
 
-    // Указываем курс доллара (в будущем нужно автоматизовать этот процесс)
-    print("Enter the dollar rate: ")
-    val ROUBLES_PER_DOLLAR: Double = input.nextDouble()
+    var number_emp: Int // количество сотрудников
+    var hours: Double // отработанные часы
+    var rate: Double // часовая ставка в руб.
+    var count_emp: Int = 0 // переменная цикла
+    var pay: Double // зарплата текущего сотрудника в руб.
+    var total_pay: Double = 0.0 // общая зарплата компании
 
-    print("Enter dollar amount: ")
-    val dollars: Double = input.nextDouble()    // Получаем сумму в долларах
-    var digit: Int
-    val roubles: Double = dollars * ROUBLES_PER_DOLLAR     //Конвертируем сумму денег в российские рубли
-
-    //Отображаем сумму с правильным окончанием
-    println(roubles)
+    println("Введите количетсво сотрудников: ")
+    number_emp = scan.nextLine().trim().toInt()
+    while (count_emp < number_emp){
+        println("Введите отработанное время для сотрудника : $count_emp")
+        hours = scan.nextLine().trim().toDouble()
+        println("Введите часовую ставку для для сотрудника : $count_emp")
+        rate = scan.nextLine().trim().toDouble()
+        pay = hours * rate
+        println("Сотрудник $count_emp должен получить $pay рублей")
+        total_pay += pay
+        count_emp++
+    }
+    println("Общая зарплата компании за данный период: $total_pay")
 
 }
